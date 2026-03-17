@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>User Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Name -->
+  <ion-item>
+    <ion-input label="Name" labelPlacement="floating" [(ngModel)]="name">
+    </ion-input>
+  </ion-item>
+
+  <!-- Email -->
+  <ion-item>
+    <ion-input label="Email" labelPlacement="floating" [(ngModel)]="email">
+    </ion-input>
+  </ion-item>
+
+  <!-- Submit Button -->
+  <ion-button expand="block" *ngIf="!selectedUserId" (click)="addUser()">
+    Add
+  </ion-button>
+
+  <!-- Update Button -->
+  <ion-button expand="block" color="warning" *ngIf="selectedUserId" (click)="updateUser()">
+    Update
+  </ion-button>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Users List</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let user of users">
+
+      <ion-label>
+        <h2>{{ user.name }}</h2>
+        <p>{{ user.email }}</p>
+      </ion-label>
+
+      <!-- Edit Button -->
+      <ion-button size="small" fill="outline" (click)="editUser(user)">
+        Edit
+      </ion-button>
+
+      <!-- Delete Button -->
+      <ion-button size="small" color="danger" fill="outline" (click)="deleteUser(user.id)">
+        Delete
+      </ion-button>
+
+    </ion-item>
+  </ion-list>
+
+</ion-content>
